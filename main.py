@@ -1,3 +1,4 @@
+import json
 from datetime import datetime
 
 opcion = 0
@@ -54,6 +55,24 @@ agenda = {
         "Estado": "Completado"
     }
 }
+"""
+write = json.dump()
+read = json.load()
+update = json.update()
+"""
+def guardar_tarea(tarea):
+    with open("Datos.json", "w", encoding="utf-8") as archivo:
+        json.dump(tarea, archivo, indent=4, ensure_ascii=False)
+
+
+def eliminar_tarea(tarea):
+    json.update()
+    pass
+
+def mostrar_agenda():
+    with open("Datos.json", "r", encoding="utf-8") as agenda_archivo:
+        datos = json.load(agenda_archivo)
+    return datos
 
 
 
@@ -78,6 +97,7 @@ while opcion != "fin":
             "Fecha Limite": fecha,
             "Estado":"Pendiente"
         }
+        guardar_tarea(agenda)
 
     elif opcion == "2":
         tarea_modificar = input("Ingrese el Titulo de la tarea que desea completar: \n").title()
@@ -90,18 +110,20 @@ while opcion != "fin":
         print(f"Se elimino la tarea {tarea_eliminar}, {valor}")
 
     elif opcion == "4":
+        agenda_desde_archivo = mostrar_agenda()
+
         print("TAREAS COMPLETADAS")
-        for nombre_tarea in agenda:
-            if agenda[nombre_tarea]["Estado"] == "Completado":
+        for nombre_tarea in agenda_desde_archivo:
+            if agenda_desde_archivo[nombre_tarea]["Estado"] == "Completado":
                 print(f"\n {nombre_tarea}")
-                for clave, valor in agenda[nombre_tarea].items():
+                for clave, valor in agenda_desde_archivo[nombre_tarea].items():
                     print(f"{clave}: {valor}")
 
         print("\nTAREAS PENDIENTES")
-        for nombre_tarea in agenda:
-            if agenda[nombre_tarea]["Estado"] == "Pendiente":
+        for nombre_tarea in agenda_desde_archivo:
+            if agenda_desde_archivo[nombre_tarea]["Estado"] == "Pendiente":
                 print(f"\n {nombre_tarea}")
-                for clave, valor in agenda[nombre_tarea].items():
+                for clave, valor in agenda_desde_archivo[nombre_tarea].items():
                     print(f"{clave}: {valor}")
             
                 
