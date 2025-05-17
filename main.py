@@ -28,7 +28,7 @@ while opcion != "fin":
         
         titulo = input("Ingrese un Titulo \n").title()
         descripcion = input("Ingrese la descripcion \n").title()
-        fecha = input("ingrese la fecha limite \n")
+        fecha = input("ingrese la fecha limite (formato DD-MM-YYYY) \n")
         agenda_archivo = mostrar_agenda()
         agenda_archivo[titulo] = {
             "Descripcion": descripcion,
@@ -42,7 +42,11 @@ while opcion != "fin":
         tarea_modificar = input("Ingrese el Titulo de la tarea que desea completar: \n").title()
         if tarea_modificar in agenda_archivo:
             agenda_archivo[tarea_modificar].update({"Estado": "Completado"})
-            print(f"Se completo la tarea {tarea_modificar}, Descripcion: {tarea_modificar["Descripcion"]}, Fecha Limite: {tarea_modificar["Fecha Limite"]}, Estado:{tarea_modificar["Estado"]}\n")
+            agenda_archivo[tarea_modificar]["Fecha tarea completada"] = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+            print(f"Se completo la tarea {tarea_modificar}, Descripcion: {agenda_archivo[tarea_modificar]["Descripcion"]},
+                   Fecha Limite: {agenda_archivo[tarea_modificar]["Fecha Limite"]}, 
+                   Estado:{agenda_archivo[tarea_modificar]["Estado"]},  
+                   La tarea se completo con fecha:{agenda_archivo[tarea_modificar]["Fecha tarea completada"]}\n")
             guardar_tarea(agenda_archivo)
         else:
             print("La tarea no se encuentra en la Agenda")
