@@ -1,0 +1,15 @@
+Datos.json
+
+# Archivos de Python compilados
+__pycache__/
+*.pyc
+*.pyo
+
+# Archivos ocultos de sistemas operativos
+Thumbs.db  # (Windows)
+
+# Entornos virtuales
+.env/
+
+# Archivos de configuración del editor (opcionales)
+.vscode/
