@@ -1,5 +1,4 @@
 import json
-import os
 from datetime import datetime
 
 opcion = 0
@@ -14,11 +13,12 @@ def guardar_tarea(tarea):
 
 # Función para leer tareas del archivo JSON
 def mostrar_agenda():
-    if os.path.exists("Datos.json"):
+    try:
         with open("Datos.json", "r", encoding="utf-8") as archivo:
-            datos = json.load(archivo)
+                datos = json.load(archivo)
         return datos
-    else:
+    except FileNotFoundError:
+        print("El archivo no existe. Primero tiene que agregar tareas")
         return {}
 
 
