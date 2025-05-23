@@ -2,6 +2,7 @@ import json
 from datetime import datetime
 
 opcion = 0
+
 # Declaro variables globales 
 ESTADO_PENDIENTE = "Pendiente"
 ESTADO_COMPLETADO = "Completado"
@@ -20,7 +21,6 @@ def mostrar_agenda():
     except FileNotFoundError:
         print("El archivo no existe. Primero tiene que agregar tareas")
         return {}
-
 
 
 # Bucle acentos  
@@ -93,6 +93,6 @@ while opcion != "fin":
                 for clave, valor in agenda_archivo[nombre_tarea].items():
                     print(f"{clave}: {valor}")
             
-                
-
-
+    # Si el usuario ingresa "fin" se sale del bucle
+    elif opcion == "fin":
+        print("Gracias por usar la agenda")
