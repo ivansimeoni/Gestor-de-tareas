@@ -22,6 +22,7 @@ def mostrar_agenda():
         return {}
 
 
+
 # Bucle acentos  
 while opcion != "fin":
     # Muestra grilla de opciones al usuario 
