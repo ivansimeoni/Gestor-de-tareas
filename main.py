@@ -70,7 +70,7 @@ while opcion != "fin":
         tarea_eliminar = input("Ingrese el Titulo de la tarea que desea eliminar: \n").title()
         if tarea_eliminar in agenda_archivo:
             valor = agenda_archivo.pop(tarea_eliminar)
-            print(f"Se elimino la tarea {tarea_eliminar},\n Descripcion: {valor["Descripcion"]},\n Fecha Limite: {valor["Fecha Limite"]},\n Estado:{valor["Estado"]}\n")
+            print(f"Se elimino la tarea {tarea_eliminar},\n Descripcion: {valor['Descripcion']},\n Fecha Limite: {valor['Fecha Limite']},\n Estado:{valor['Estado']}\n")
             guardar_tarea(agenda_archivo)
         else:
             print("La tarea no se encuentra en la Agenda")
